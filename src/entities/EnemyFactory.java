@@ -44,8 +44,8 @@ public class EnemyFactory {
             selectedTier = tier3;
         }
 
-        int index = selectedTier.size();
-        Enemy template = selectedTier.get(index);
+        int selectedEnemyIndex = random.nextInt(selectedTier.size());
+        Enemy template = selectedTier.get(selectedEnemyIndex);
 
         return (new Enemy(template.getName(), template.getHp(), template.getDamage(), template.getDefense()));
     }

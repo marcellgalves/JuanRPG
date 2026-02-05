@@ -5,14 +5,16 @@ public class Entity {
     private int hp;
     private int damage;
     private int defense;
+    private int speed;
     private int level;
     private int xp;
 
-    public Entity(String name, int hp, int damage, int defense) {
+    public Entity(String name, int hp, int damage, int defense, int speed) {
         this.name = name;
         this.hp = hp;
         this.damage = damage;
         this.defense = defense;
+        this.speed = speed;
         this.level = 1;
     }
 
@@ -52,6 +54,12 @@ public class Entity {
     public void setXp(int xp) {
         this.xp = xp;
     }
+    public int getSpeed() {
+        return speed;
+    }
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
     public void receiveDamage(Entity target) {
         hp = (this.defense - target.damage) - this.hp;
@@ -64,14 +72,7 @@ public class Entity {
         return hp > 0;
     }
 
-    public boolean leveledUp(){
-        if (this.xp >= 0){
-            this.level += 1;
-            this.xp = 0;
-            return true;
-        }
-        return false;
-    }
+
 
 
 }
