@@ -14,7 +14,6 @@ public class Character extends Entity{
         this.luckBonus = 0;
         this.xp = 0;
 
-
     }
 
     public int getLuck() {
