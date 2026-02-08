@@ -1,4 +1,4 @@
-package entities;
+package br.com.javaland.logic;
 
 public class GameFunctions {
     public static final String ANSI_RESET = "\u001B[0m";

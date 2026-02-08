@@ -1,4 +1,4 @@
-package entities;
+package br.com.javaland.entities;
 
 public class Entity {
     private String name;

@@ -1,7 +1,9 @@
-package entities;
+package br.com.javaland.logic;
 
-import java.util.Arrays;
-import java.util.List;
+import br.com.javaland.entities.Character;
+import br.com.javaland.entities.Enemy;
+import br.com.javaland.entities.Entity;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,7 +25,7 @@ public class FightLogic {
         System.out.println("-------------------------------------------------------------------------------------------");
 
     }
-    private boolean oDestinoSorriu(Character character){
+    private boolean oDestinoSorriu(br.com.javaland.entities.Character character){
         int chanceTotal = character.getLuck() + character.getLuckBonus();
 
         if(chanceTotal > 100) chanceTotal = 100;
@@ -39,7 +41,7 @@ public class FightLogic {
         gameFunctions.esperar(700);
         System.out.println("[" + character.getName().toUpperCase() + "]    VS    [" + enemy.getName().toUpperCase() + "]");
         while (enemy.getHp() > 0 && character.getHp() > 0) {
-            System.out.println("✦ AÇÕES:    ✦ 1. LUTAR    ✦ 2. RÁPIDA EXAMINADA");
+            System.out.println("✦ AÇÕES:    ✦ 1. LUTAR    ✦ 2. INVENTÁRIO    ✦ 3. RÁPIDA EXAMINADA");
             String acao = scanner.nextLine();
             switch (acao) {
                 case "1":
@@ -59,10 +61,12 @@ public class FightLogic {
                             int xpDoInimigo = (enemy.getDamage() * 3) + (enemy.getLevel() * 10);
 
                             character.setXp(character.getXp() + xpDoInimigo);
+                            System.out.println("OURO adquirido: 10");
+                            character.setGold(character.getGold() + 10);
                             System.out.println("XP adquirido: " + xpDoInimigo);
 
                             if (character.leveledUp()) {
-                                System.out.println("★ LEVEL UP! Você está mais perto de chegar ao topo... ou não. ★" );
+                                System.out.println("LEVEL UP! Você está mais perto de chegar ao topo... ou não. ★" );
 
                                 character.setDamage(character.getDamage() + 2);
                                 character.setMaxHp(character.getMaxHp() + 10);
@@ -84,8 +88,10 @@ public class FightLogic {
 
                     }
                     break;
-
                 case "2":
+                    character.showInventory();
+                    break;
+                case "3":
                     showStatus(enemy);
                     gameFunctions.esperar(2500);
                     break;

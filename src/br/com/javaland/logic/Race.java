@@ -1,4 +1,4 @@
-package entities;
+package br.com.javaland.logic;
 
 public class Race {
     private String name;

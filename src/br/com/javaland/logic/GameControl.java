@@ -1,5 +1,8 @@
-package entities;
+package br.com.javaland.logic;
 
+
+import br.com.javaland.entities.Character;
+import br.com.javaland.shop.Shop;
 
 import java.util.Scanner;
 
@@ -10,7 +13,8 @@ public class GameControl {
     EnemyFactory factory = new EnemyFactory();
     GameFunctions gameFunctions = new GameFunctions();
     FightLogic fightLogic = new FightLogic();
-    private Character character;
+    Shop shop = new Shop();
+    private br.com.javaland.entities.Character character;
 
     public void start(){
         gameIntroduction();
@@ -30,7 +34,8 @@ public class GameControl {
     }
     public void characterConfig(){
         raceSelector.showRaces();
-        System.out.print("Qual é a sua linhagem, herói? ");
+        System.out.println("Qual é a sua linhagem, herói? ");
+        System.out.print("> _");
         String input = scanner.nextLine();
 
         int index;
@@ -42,6 +47,7 @@ public class GameControl {
         }
         gameFunctions.clearConsole();
         System.out.print( "E o seu NOME, viajante? ");
+        System.out.print("> _");
         String characterName = scanner.nextLine();
         character = new Character(characterName, 10, 1, 5, 1, 20, 10);
         gameFunctions.esperar(1500);
@@ -63,7 +69,8 @@ public class GameControl {
             System.out.println("===========================================");
             System.out.println("1. LUTAR");
             System.out.println("2. STATUS");
-            System.out.println("3. SAIR");
+            System.out.println("3. LOJA");
+            System.out.println("4. SAIR");
             System.out.println();
             String choise = scanner.nextLine();
             switch (choise){
@@ -75,8 +82,10 @@ public class GameControl {
                     fightLogic.showStatus(character);
                     gameFunctions.esperar(2000);
                     break;
-
                 case "3":
+                    shop.showShop(character);
+                    break;
+                case "4":
                     System.out.println("Salvando o progresso e saindo. ");
                     leave = true;
                     gameFunctions.clearConsole();

@@ -1,4 +1,6 @@
-package entities;
+package br.com.javaland.logic;
+
+import br.com.javaland.entities.Enemy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
